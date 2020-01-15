@@ -32,10 +32,17 @@ module ShutterstockRuby
     private
 
     def build_url(path)
-      if configuration.access_token
-        "https://#{ShutterstockRuby::API_BASE}#{path}"
+
+      if configuration.sandbox_mode.present? && configuration.sandbox_mode.to_s.downcase == 'true'
+        api_base = ShutterstockRuby::API_BASE_SANDBOX
       else
-        "https://#{configuration.api_client}:#{configuration.api_secret}@#{ShutterstockRuby::API_BASE}#{path}"
+        api_base = ShutterstockRuby::API_BASE
+      end
+
+      if configuration.access_token
+        "https://#{api_base}#{path}"
+      else
+        "https://#{configuration.api_client}:#{configuration.api_secret}@#{api_base}#{path}"
       end
     end
 

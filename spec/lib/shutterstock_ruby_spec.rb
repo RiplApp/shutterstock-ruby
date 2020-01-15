@@ -8,6 +8,7 @@ RSpec.describe "ShutterstockRuby instance client" do
     expect(client.configuration.access_token).to be nil
     expect(client.configuration.api_client).to be nil
     expect(client.configuration.api_secret).to be nil
+    expect(client.configuration.sandbox_mode).to be nil
   end
 
   it 'sets the correct configuration' do
@@ -29,30 +30,36 @@ RSpec.describe "ShutterstockRuby static client" do
     ShutterstockRuby.configuration.access_token = nil
     ShutterstockRuby.configuration.api_client = nil
     ShutterstockRuby.configuration.api_secret = nil
+    ShutterstockRuby.configuration.sandbox_mode = nil
   end
 
   it 'has the correct default' do
     expect(ShutterstockRuby.configuration.access_token).to be nil
     expect(ShutterstockRuby.configuration.api_client).to be nil
     expect(ShutterstockRuby.configuration.api_secret).to be nil
+    expect(ShutterstockRuby.configuration.sandbox_mode).to be nil
   end
 
   it 'sets the correct configuration' do
     expect(ShutterstockRuby.configuration.access_token).to be nil
     expect(ShutterstockRuby.configuration.api_client).to be nil
     expect(ShutterstockRuby.configuration.api_secret).to be nil
+    expect(ShutterstockRuby.configuration.sandbox_mode).to be nil
 
     token = SecureRandom.uuid
     key = SecureRandom.uuid
     secret = SecureRandom.uuid
+    sandbox_mode = 'true'
     ShutterstockRuby.configure do |config|
       config.access_token = token
       config.api_client = key
       config.api_secret = secret
+      config.sandbox_mode = sandbox_mode
     end
 
     expect(ShutterstockRuby.configuration.access_token).to equal(token)
     expect(ShutterstockRuby.configuration.api_client).to equal(key)
     expect(ShutterstockRuby.configuration.api_secret).to equal(secret)
+    expect(ShutterstockRuby.configuration.sandbox_mode).to equal(sandbox_mode)
   end
 end

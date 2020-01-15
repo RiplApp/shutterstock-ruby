@@ -6,9 +6,9 @@ require 'shutterstock-ruby/images'
 require 'shutterstock-ruby/videos'
 
 # Top level name space for the entire Gem.
-# Yo
 module ShutterstockRuby
-  API_BASE = 'api.shutterstock.com/v2'
+  API_BASE = "api.shutterstock.com/v2"
+  API_BASE_SANDBOX = "api-sandbox.shutterstock.com/v2"
 
   def self.configuration
     @configuration ||=  Configuration.new({})
