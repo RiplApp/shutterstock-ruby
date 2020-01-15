@@ -6,6 +6,7 @@ require 'shutterstock-ruby/images'
 require 'shutterstock-ruby/videos'
 
 # Top level name space for the entire Gem.
+# Yo
 module ShutterstockRuby
   API_BASE = 'api.shutterstock.com/v2'
 
