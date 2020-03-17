@@ -4,6 +4,7 @@ require 'shutterstock-ruby/configuration'
 require 'shutterstock-ruby/connections'
 require 'shutterstock-ruby/images'
 require 'shutterstock-ruby/videos'
+require 'shutterstock-ruby/collections'
 
 # Top level name space for the entire Gem.
 module ShutterstockRuby
@@ -20,12 +21,13 @@ module ShutterstockRuby
   end
 
   class Client
-    attr_reader :configuration, :videos, :images
+    attr_reader :configuration, :videos, :images, :collections
 
     def initialize(args = {})
       @configuration = Configuration.new(args)
       @videos = Videos.new(configuration)
       @images = Images.new(configuration)
+      @collections = Collections.new(configuration)
     end
 
   end
