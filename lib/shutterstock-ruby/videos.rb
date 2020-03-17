@@ -10,6 +10,10 @@ module ShutterstockRuby
       JSON.parse(get('/videos', { id: id }.merge(options)))
     end
 
+    def similar(id, options = {})
+      JSON.parse(get("/videos/#{id}/similar", options))
+    end
+
     def purchase(id, subscription_id, size, options = {})
       params = { subscription_id: subscription_id, size: size }
       metadata = options.delete(:metadata) || {}
@@ -34,6 +38,10 @@ module ShutterstockRuby
 
       def details(id, options = {})
         client.details(id, options)
+      end
+
+      def similar(id, options = {})
+        client.similar(id, options)
       end
 
       def purchase(id, subscription_id, size, options = {})
